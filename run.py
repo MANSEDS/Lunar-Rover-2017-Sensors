@@ -3,5 +3,7 @@ import read
 
 init.init()
 
+num = 0
 while True:
-    read.read()
+    read.read(num)
+    num += 1

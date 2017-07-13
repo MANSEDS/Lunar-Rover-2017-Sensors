@@ -15,7 +15,7 @@ def twos_compliment_combine(msb, lsb):
         return twos_compliment - 65536
     return twos_compliment
 
-def read():
+def read(num):
     smbus = SMBus(1)
 
     # Specify chip location info.
@@ -54,4 +54,4 @@ def read():
     temp  = twos_compliment_combine(smbus.read_byte_data(CHIP_LOC, TEMP_MSB),  smbus.read_byte_data(CHIP_LOC, TEMP_LSB))
 
     data = open("sensors.dat", "a")
-    data.write("{} {} {} {} {} {} {} {}\n".format(acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z, temp, datetime.now()))
+    data.write("{} {} {} {} {} {} {} {} {}\n".format(num, acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z, temp, datetime.now()))
