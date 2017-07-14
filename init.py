@@ -15,7 +15,7 @@ def init():
     smbus = SMBus(1)
 
     # Specify chip address and WHO_AM_I value.
-    CHIP_LOC = 0b1101011
+    CHIP_LOC = 0b1101010
     WHOAMI   = 0b01101001
 
     # Specify control register addresses for chip.

@@ -12,7 +12,7 @@ from datetime import datetime
 smbus = SMBus(1)
 
 # Specify chip location info.
-CHIP_LOC = 0b1101011
+CHIP_LOC = 0b1101010
 
 def twos_compliment_combine(msb, lsb):
     twos_compliment = 256 * msb + lsb
