@@ -68,5 +68,5 @@ def read(num):
     # Read in temp data.
     temp  = read_temp_value()
 
-    data = open("/var/www/html/sensors.dat", "a")
+    data = open("/var/www/html/inertial.dat", "a")
     data.write("{} {} {} {} {} {} {} {} {}\n".format(num, acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z, temp, datetime.now()))
