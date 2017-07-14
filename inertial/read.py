@@ -1,4 +1,4 @@
-# read.py
+# inertial/read.py
 # Created by Matthew Marshall, 2017
 # Contributors:
 #   Matthew Marshall
@@ -52,7 +52,7 @@ def read_gyr_value(reg_msb, reg_lsb):
 
 # 12-bit ADC Resolution
 def read_temp_value():
-    return read_16bit_value(TEMP_MSB, TEMP_LSB) / 4096
+    return read_16bit_value(TEMP_MSB, TEMP_LSB) / 16.0 + 25
 
 def read(num):
     # Read in magnetic field data.

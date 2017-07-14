@@ -1,4 +1,4 @@
-# init.py
+# inertial/init.py
 # Created by Matthew Marshall, 2017
 # Contributors:
 #   Matthew Marshall
