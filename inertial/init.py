@@ -47,3 +47,6 @@ def init():
         #smbus.write_byte_data(CHIP_LOC, CTRL_10, 0b00000000) # Leave defaults.
 
         return 0
+
+if __name__ == "__main__":
+    init()

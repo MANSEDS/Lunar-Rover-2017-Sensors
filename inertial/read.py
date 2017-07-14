@@ -8,6 +8,7 @@
 
 from smbus import SMBus
 from datetime import datetime
+import os
 
 smbus = SMBus(1)
 
@@ -33,6 +34,8 @@ GYR_Z_MSB = 0x27
 TEMP_LSB = 0x20
 TEMP_MSB = 0x21
 
+num = 0
+
 def twos_compliment_combine(msb, lsb):
     twos_compliment = 256 * msb + lsb
     if twos_compliment >= 32767:
@@ -54,7 +57,14 @@ def read_gyr_value(reg_msb, reg_lsb):
 def read_temp_value():
     return read_16bit_value(TEMP_MSB, TEMP_LSB) / 16.0 + 25
 
-def read(num):
+def read():
+    global num
+
+    if os.path.isfile("/var/www/html/inertial.dat"):
+        with open("/var/www/html/inertial.dat", "r") as handle:
+            lines  = handle.readlines()
+            num = int(lines[-1].split()[0])
+
     # Read in magnetic field data.
     acc_x = read_acc_value(ACC_X_MSB, ACC_X_LSB)
     acc_y = read_acc_value(ACC_Y_MSB, ACC_Y_LSB)
@@ -68,5 +78,10 @@ def read(num):
     # Read in temp data.
     temp  = read_temp_value()
 
-    data = open("/var/www/html/inertial.dat", "a")
+    data = open("/var/www/html/inertial.dat", "a+")
     data.write("{} {} {} {} {} {} {} {} {}\n".format(num, acc_x, acc_y, acc_z, gyr_x, gyr_y, gyr_z, temp, datetime.now()))
+
+    num += 1
+
+if __name__ == "__main__":
+    read()
