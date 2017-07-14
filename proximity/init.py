@@ -13,7 +13,7 @@ import sys
 
 import RPi.GPIO as GPIO
 
-sys.path.insert(0, "../Robotics/Motor_brake.py")
+sys.path.insert(0, "../../Robotics/Motor_brake.py")
 
 from Motor_brake import motor_brake
 
