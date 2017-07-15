@@ -62,16 +62,7 @@ static void save_pgm_file(void)
 	char image_name[32];
 	int image_index = 0;
 
-	do {
-		sprintf(image_name, "IMG_%.4d.pgm", image_index);
-		image_index += 1;
-		if (image_index > 9999) 
-		{
-			image_index = 0;
-			break;
-		}
-
-	} while (access(image_name, F_OK) == 0);
+	sprintf(image_name, "thermal_img.pgm", image_index);
 
 	FILE *f = fopen(image_name, "w");
 	if (f == NULL)
